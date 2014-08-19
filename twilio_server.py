@@ -7,7 +7,7 @@ from flask.ext.sqlalchemy import SQLAlchemy
 import twilio.twiml
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:password@127.0.0.1/test'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://mesos:mesos@10.0.0.71/mesos'
 
 db = SQLAlchemy(app)
 
