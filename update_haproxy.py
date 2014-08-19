@@ -4,6 +4,7 @@ This is a quick hack to update haproxy with marathon ip:port
 """
 import os
 import requests
+import time
 
 MARATHON_URL = "http://10.0.0.68:8080/"
 APP = '3333'
@@ -53,9 +54,19 @@ def get_mesos_app_hosts_list():
     return haproxy_host_line
 
 
-if __name__ == '__main__':
+def update_config_file():
     app_hosts = get_mesos_app_hosts_list()
     with open("/etc/haproxy/haproxy.cfg", "w") as f:
         f.write(HAPROXY_CONFIG_FILE)
         f.write(app_hosts)
     os.system("/etc/init.d/haproxy restart")
+
+if __name__ == '__main__':
+    # NEVER DIE
+    while True:
+        time.sleep(5)
+        try:
+            print "UPDATING"
+            update_config_file()
+        except:
+            pass
