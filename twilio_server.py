@@ -1,4 +1,5 @@
 import datetime
+import socket
 
 from flask import Flask
 from flask import request
@@ -16,16 +17,18 @@ class CallEntry(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     phone_number = db.Column(db.String(255))
     created_at = db.Column(db.DateTime, default=datetime.datetime.now())
+    hostname = db.Column(db.String(255))
 
-    def __init__(self, phone_number):
+    def __init__(self, phone_number, hostname):
         self.phone_number = phone_number
+        self.hostname = hostname
 
 
 @app.route("/", methods=['GET', 'POST'])
 def answer_call():
     """Respond to incoming requests."""
     from_number = request.values.get('From', 'Unknown')
-    call_entry = CallEntry(from_number)
+    call_entry = CallEntry(from_number, socket.gethostname())
     db.session.add(call_entry)
     db.session.commit()
     resp = twilio.twiml.Response()
