@@ -27,7 +27,9 @@ class CallEntry(db.Model):
 @app.route("/", methods=['GET', 'POST'])
 def answer_call():
     """Respond to incoming requests."""
-    from_number = request.values.get('From', 'Unknown')
+    from_number = str(request.values.get('From', 'Unknown'))
+    # blur out last 3 digits:
+    from_number = from_number[:len(from_number)-3] + "xxx"
     call_entry = CallEntry(from_number, socket.gethostname())
     db.session.add(call_entry)
     db.session.commit()
