@@ -6,7 +6,7 @@ import os
 import requests
 import time
 
-MARATHON_URL = "http://10.0.0.68:8080/"
+MARATHON_URL = "http://10.0.0.4:8080/"
 APP = '3333'
 
 HAPROXY_CONFIG_FILE = """
