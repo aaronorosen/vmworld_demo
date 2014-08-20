@@ -32,7 +32,7 @@ def answer_call():
     db.session.add(call_entry)
     db.session.commit()
     resp = twilio.twiml.Response()
-    resp.Say("Hello armando! Armando armando.")
+    resp.say("Hello armando! Armando armando.")
 #    resp.say("This call is being served on from docker container "
 #             + str(socket.gethostname()) + " running on VMWare NSX. The"
 #             " rest of the week should be sunny in san francisco.")
