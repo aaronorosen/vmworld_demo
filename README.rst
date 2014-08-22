@@ -52,3 +52,8 @@ echo external | sudo tee /etc/mesos-slave/isolation
 # db 
 create database mesos; 
 GRANT ALL PRIVILEGES ON mesos.* TO 'mesos'@'%' IDENTIFIED BY 'mesos';
+
+
+# deploy demo
+curl -X POST -H "Content-Type: application/json" http://10.0.0.4:8080/v2/apps -d @demo.json
+
