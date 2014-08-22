@@ -47,3 +47,8 @@ EOF
 
 echo /usr/local/bin/deimos | sudo tee /etc/mesos-slave/containerizer_path
 echo external | sudo tee /etc/mesos-slave/isolation
+
+
+# db 
+create database mesos; 
+GRANT ALL PRIVILEGES ON mesos.* TO 'mesos'@'%' IDENTIFIED BY 'mesos';
