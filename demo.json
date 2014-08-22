@@ -1,0 +1,11 @@
+{
+    "container": {
+    "image": "docker:///aaronorosen/vmworld_demo"
+  },
+  "id": "voip-demo",
+  "instances": "2",
+  "cpus": "1",
+  "mem": "512",
+  "ports": [0]
+}
+
