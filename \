@@ -1,8 +1,0 @@
-FROM       ubuntu:latest
-MAINTAINER Aaron Rosen <aaronorosen@gmail.com>
-RUN apt-get update
-RUN apt-get install -y python-pip wget git
-RUN pip install flask
-RUN pip install twilio
-RUN git clone https://github.com/aaronorosen/vmworld_demo
-EXPOSE 5000
