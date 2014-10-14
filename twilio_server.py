@@ -35,10 +35,7 @@ def answer_call():
     db.session.add(call_entry)
     db.session.commit()
     resp = twilio.twiml.Response()
-    resp.say("This call is being served from docker container "
-             + str(socket.gethostname()) + " running on V M Ware NSX. The"
-             " rest of the week should be sunny in barcelona."
-             " Good bye.")
+    resp.say("hello world")
     return str(resp)
 
 if __name__ == "__main__":
